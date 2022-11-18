@@ -7,7 +7,7 @@ from multiprocessing.dummy import Pool as ThreadPool
 # SETTINGS
 FRAME_COUNT = 4383  # The amount of frames in your video. Must be at most (the number of frames you have)-1
 STEP_SKIP = 1  # Makes the framerate 20/STEP by skipping some frames. Higher value = lower video FPS = lower file size and system requirements
-SPEED = 1  # Adjusts the speed of the video. Higher value = slower video
+SPEED = 1  # Adjusts the speed of the video. Higher value = slower video. Does not affect the system requirements
 # ^ these two above add together resulting if a framerate of (20 / STEP_SKIP) / STEP_TIME
 # =====================
 
@@ -19,13 +19,13 @@ def process_image(i: int):
     img = Image.open(f"frames/{i}.jpg")
     # Feel free to play around with the numbers
     for x in range(40):
-        for y in range(22):
-            c1 = str(sum(img.getpixel((479 - (x * 12 + 8), 359 - (y * 16 + 8)))) > 375).lower() # approx
-            c2 = str(sum(img.getpixel((479 - (x * 12 + 4), 359 - (y * 16 + 8)))) > 375).lower()
-            c3 = str(sum(img.getpixel((479 - (x * 12), 359 - (y * 16 + 8)))) > 375).lower()
-            c4 = str(sum(img.getpixel((479 - (x * 12 + 8), 359 - (y * 16)))) > 375).lower()
-            c5 = str(sum(img.getpixel((479 - (x * 12 + 4), 359 - (y * 16)))) > 375).lower()
-            c6 = str(sum(img.getpixel((479 - (x * 12), 359 - (y * 16)))) > 375).lower()
+        for y in range(30):
+            c1 = str(sum(img.getpixel((479 - (x * 12 + 8), 359 - (y * 12 + 6)))) > 384).lower() # approx
+            c2 = str(sum(img.getpixel((479 - (x * 12 + 4), 359 - (y * 12 + 6)))) > 384).lower()
+            c3 = str(sum(img.getpixel((479 - (x * 12), 359 - (y * 12 + 6)))) > 384).lower()
+            c4 = str(sum(img.getpixel((479 - (x * 12 + 8), 359 - (y * 12)))) > 384).lower()
+            c5 = str(sum(img.getpixel((479 - (x * 12 + 4), 359 - (y * 12)))) > 384).lower()
+            c6 = str(sum(img.getpixel((479 - (x * 12), 359 - (y * 12)))) > 384).lower()
             commands.append(f"setblock {x} {100 + y} 0 chiseled_bookshelf[slot_0_occupied={c1},slot_1_occupied={c2},slot_2_occupied={c3},slot_3_occupied={c4},slot_4_occupied={c5},slot_5_occupied={c6}]\n")
     with open(f"generated_datapack/data/video/functions/{i}.mcfunction", "w") as file:
         file.writelines(commands)
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     with open("generated_datapack/data/video/functions/stop.mcfunction", "w") as file:
         file.writelines([
             "scoreboard players set tick video 0\n",
-            "fill 0 100 0 39 121 0 chiseled_bookshelf"
+            "fill 0 100 0 39 129 0 chiseled_bookshelf"
         ])
 
     # The functions to be run after the world loads
