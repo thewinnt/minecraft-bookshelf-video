@@ -1,13 +1,13 @@
-# Bad Apple
+# Bookshelf Video Maker
 A script to make Bad Apple (and other videos) with Minecraft's chiseled bookshelves
 
 # Requirements
-- [ffmpeg](https://ffmpeg.org/download.html) (or any other tool to convert a video into individual frames)
-- at least 100 MB of storage (or more for long videos)
-- at least 2-3 GB of RAM to allocate to Minecraft (long videos require more RAM, 2 GB will not be enough in that case)
-- a video in 480x360 resolution
+- Minecraft: Java Edition 22w46a or newer
 - Python 3.6 or newer with PIL (pillow) installed
-- Minecraft: Java Edition 22w46a+
+- a video in 480x360 resolution, preferrably black and white
+- at least 2-3 GB of RAM to allocate to Minecraft (long videos require more RAM, 2 GB will not be enough in those cases)
+- at least 100-200 MB of storage (or more for long videos)
+- [ffmpeg](https://ffmpeg.org/download.html) (or any other tool to convert a video into individual frames)
 
 # Usage
 - Install Pillow with the command `pip install pillow` (in a terminal) if you haven't already
